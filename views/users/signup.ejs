@@ -1,0 +1,56 @@
+<% layout("/layouts/boilerplate") %>
+
+<%- include("../includes/navbar.ejs") %>
+<%- include("../includes/flash.ejs") %>
+
+<!-- SIGN UP SECTION -->
+<div class="container cnt-3 mt-5 mb-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="card signup__card">
+            <h2 class="text-center mt-2">Sign Up</h2>
+            <form action="/signup" method="POST" class="needs-validation" novalidate>
+                <div class="form-floating mb-2 mt-1">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Full name"
+                        name="user[fullname]" required>
+                    <label for="floatingInput">Full Name</label>
+                </div>
+                <div class="form-floating mb-2 mt-1">
+                    <input type="text" class="form-control" id="floatingInput"
+                        placeholder="Enter your username" name="user[username]" required>
+                    <label for="floatingInput">Username</label>
+                </div>
+                <div class="form-floating mb-2 mt-1">
+                    <input type="email" class="form-control" id="floatingInput"
+                        placeholder="Enter your email" name="user[email]" required>
+                    <label for="floatingInput">Email Address</label>
+                </div>
+                <div class="form-floating mb-2 mt-1">
+                    <input type="password" class="form-control" id="floatingInput"
+                        placeholder="Enter Password" name="user[password]" required>
+                    <label for="floatingInput">Password</label>
+                </div>
+                <div class="row justify-content-center align-items-center mt-3">
+                    <button type="submit" class=" signup__btn btn btn-primary btn-pro">
+                        Sign up
+                    </button>
+                </div>
+            </form>              
+            <div class="d-flex align-items-center mt-2">
+                <hr style="flex:1;">
+                <span style="margin: 0 10px;">OR</span>
+                <hr style="flex:1;">
+            </div>
+            <div class="row justify-content-center align-items-center mt-2 mb-2">
+                <a href="/auth/google"
+                    class="btn btn-pro btn-primary login__btn google-login-btn d-flex align-items-center justify-content-center gap-2">
+                    <img src="https://res.cloudinary.com/dmxrppnpy/image/upload/v1774020186/Google_aohcut.png" width="20">
+                    <span>Continue with Google</span>
+                </a>
+            </div>
+            <p class="text-center mt-2">
+                Already have an account : &nbsp;
+                <a href="/login" class="signup__a">Log in</a>
+            </p>
+        </div>
+    </div>
+</div>

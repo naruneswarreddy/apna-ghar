@@ -1,0 +1,160 @@
+<% layout("layouts/boilerplate") %>
+
+<%- include("../includes/navbar.ejs") %>
+<%- include("../includes/flash.ejs") %>
+
+<body>
+
+  <div class="container">
+
+    <div class="search-panel p-3 mt-3">
+      <form class="d-flex" method="GET" action="/listings">
+
+        <input class="form-control me-2 search-input" name="location" type="search"
+          placeholder="Search by location..." value="<%= searchLocation || '' %>">
+
+        <input type="hidden" name="category" value="<%= selectedCategory || '' %>">
+
+        <button class="btn search-btn" style="background-color: #8590d6; border-radius: 25px;" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+    </div>
+
+    <div id="filters">
+      <a href="/listings?category=village" class="filter <%= selectedCategory === 'village' ? 'active' : '' %>">
+        <i class="fa-solid fa-house-chimney"></i>
+        <span>Village</span>
+      </a>
+
+      <a href="/listings?category=farm" class="filter <%= selectedCategory === 'farm' ? 'active' : '' %>">
+        <i class="fa-solid fa-tractor"></i>
+        <span>Farms</span>
+      </a>
+
+      <a href="/listings?category=nature" class="filter <%= selectedCategory === 'nature' ? 'active' : '' %>">
+        <i class="fa-solid fa-tree"></i>
+        <span>Nature</span>
+      </a>
+
+      <a href="/listings?category=mountains"
+        class="filter <%= selectedCategory === 'mountains' ? 'active' : '' %>">
+        <i class="fa-solid fa-mountain-sun"></i>
+        <span>Mountains</span>
+      </a>
+
+      <a href="/listings?category=lakes" class="filter <%= selectedCategory === 'lakes' ? 'active' : '' %>">
+        <i class="fa-solid fa-water"></i>
+        <span>Lakes</span>
+      </a>
+
+      <a href="/listings?category=camping" class="filter <%= selectedCategory === 'camping' ? 'active' : '' %>">
+        <i class="fa-solid fa-campground"></i>
+        <span>Camping</span>
+      </a>
+
+      <a href="/listings?category=heritage" class="filter <%= selectedCategory === 'heritage' ? 'active' : '' %>">
+        <i class="fa-solid fa-landmark"></i>
+        <span>Heritage</span>
+      </a>
+
+      <a href="/listings?category=budget" class="filter <%= selectedCategory === 'budget' ? 'active' : '' %>">
+        <i class="fa-solid fa-wallet"></i>
+        <span>Budget</span>
+      </a>
+
+      <a href="/listings?category=eco" class="filter <%= selectedCategory === 'eco' ? 'active' : '' %>">
+        <i class="fa-solid fa-seedling"></i>
+        <span>Eco</span>
+      </a>
+
+      <a href="/listings?category=offbeat" class="filter <%= selectedCategory === 'offbeat' ? 'active' : '' %>">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <span>Offbeat</span>
+      </a>
+
+      <a href="/listings?category=orchards<%= searchLocation ? '&location=' + searchLocation : '' %>"
+        class="filter <%= selectedCategory === 'orchards' ? 'active' : '' %>">
+        <i class="fa-solid fa-apple-whole"></i>
+        <span>Orchards</span>
+      </a>
+
+      <a href="/listings?category=cities<%= searchLocation ? '&location=' + searchLocation : '' %>"
+        class="filter <%= selectedCategory === 'cottages' ? 'active' : '' %>">
+        <i class="fa-solid fa-city"></i>
+        <span>Cities</span>
+      </a>
+
+      <a href="/listings?category=riverside<%= searchLocation ? '&location=' + searchLocation : '' %>"
+        class="filter <%= selectedCategory === 'riverside' ? 'active' : '' %>">
+        <i class="fa-solid fa-ship"></i>
+        <span>Riverside</span>
+      </a>
+
+      <a href="/listings?category=adventure<%= searchLocation ? '&location=' + searchLocation : '' %>"
+        class="filter <%= selectedCategory === 'adventure' ? 'active' : '' %>">
+        <i class="fa-solid fa-hiking"></i>
+        <span>Adventure</span>
+      </a>
+
+      <a href="/listings?category=farmToTable<%= searchLocation ? '&location=' + searchLocation : '' %>"
+        class="filter <%= selectedCategory === 'farmToTable' ? 'active' : '' %>">
+        <i class="fa-solid fa-utensils"></i>
+        <span>Farm-to-Table</span>
+      </a>
+
+      <a href="/listings?category=animalFarms<%= searchLocation ? '&location=' + searchLocation : '' %>"
+        class="filter <%= selectedCategory === 'animalFarms' ? 'active' : '' %>">
+        <i class="fa-solid fa-cow"></i>
+        <span>Animal Farms</span>
+      </a>
+
+      <a href="/listings?category=community<%= searchLocation ? '&location=' + searchLocation : '' %>"
+        class="filter <%= selectedCategory === 'community' ? 'active' : '' %>">
+        <i class="fa-solid fa-people-roof"></i>
+        <span>Community</span>
+      </a>
+
+      <a href="/listings?category=festivals<%= searchLocation ? '&location=' + searchLocation : '' %>"
+        class="filter <%= selectedCategory === 'festivals' ? 'active' : '' %>">
+        <i class="fa-solid fa-calendar"></i>
+        <span>Festivals</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- LISTINGS SECTION -->
+  <div class="container mt-4 mb-5">
+    <div class="row g-3 ">
+      <% for(let listing of allListings) { %>
+
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+          <a href="/listings/<%= listing._id %>" class="listing-link" style="text-decoration: none;">
+
+            <div class="card home-card text-center listing-card-index">
+              <img src="<%= listing.imageUrl %>" class="card-img-top" alt="listing_image" style="height: 10rem;">
+
+              <div class="mt-1 text-start">
+                <h6>
+                  <%= listing.title %>
+                </h6>
+                <span>
+                  &#8377;
+                  <%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A" %>
+                    / month
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <% } %>
+
+          <!-- PAGINATION SECTION -->
+          <%- include("../includes/pagination.ejs", { prevPageUrl : `/listings/?page=${page - 1}`, currentPageUrl
+            : `/listings/?page=${page}`, nextPageUrl : `/listings/?page=${page + 1}`, currentPage : page,
+            totalPages : totalPages, margin : "mt-1" }) %>
+    </div>
+  </div>
+
+</body>

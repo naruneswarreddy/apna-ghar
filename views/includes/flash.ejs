@@ -1,0 +1,28 @@
+
+<!-- SUCCESS FLASH -->
+<% if(success && success.length) { %>
+<div class="alert-container">
+    <div class="alert alert-success alert-dismissible fade show text-center custom-alert" role="alert">
+        <%= success %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+</div>
+<% } %>
+
+<!-- ERROR FLASH -->
+<% if(error && error.length) { %>
+<div class="alert-container">
+    <div class="alert alert-danger alert-dismissible fade show text-center custom-alert" role="alert">
+        <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+</div>
+<% } %>
+
+<!-- FLASH SETTIMEOUT -->
+<script>
+    setTimeout(() => {
+        const alerts = document.querySelectorAll(".alert");
+        alerts.forEach(alert => alert.remove());
+    }, 4000)  
+</script>

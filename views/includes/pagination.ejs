@@ -1,0 +1,23 @@
+<div class="row <%= margin || "" %>">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-end" style="color: #8590d6;">
+            <li class="page-item">
+                <% if(currentPage>1) {%>
+                    <a class="page-link" href="<%= prevPageUrl %>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    <%}%>
+            </li>
+            <li class="page-item"><a class="page-link" href="<%= currentPageUrl %>">
+                    <%= currentPage %>
+                </a></li>
+            <li class="page-item">
+                <% if(currentPage < totalPages){ %>
+                    <a class="page-link" href="<%= nextPageUrl %>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    <%}%>
+            </li>
+        </ul>
+    </nav>
+</div>

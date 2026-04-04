@@ -1,0 +1,79 @@
+<% layout("layouts/boilerplate") %>
+
+<%- include('../includes/navbar.ejs') %>
+<%- include("../includes/flash.ejs") %>
+
+<div class="container cnt-3 mt-5 mb-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="card signup__card">
+            <h2 class="text-center mt-2">Create New Listing</h2>
+            <form action="/listings" method="POST" class="needs-validation" novalidate
+                enctype="multipart/form-data">
+                <div class="form-floating mb-2 mt-1">
+                    <input type="text" class="form-control" id="floatingInput"
+                        placeholder="dd a catchy title" name="listing[title]" required>
+                    <label for="floatingInput">Title</label>
+                </div>
+                <div class="mb-2 mt-1">
+                    <textarea class="form-control" id="floatingInput" placeholder="Description"
+                        name="listing[description]" required style="height: 7rem;"></textarea>
+                </div>
+                <div class="form-floating mb-2 mt-1">
+                    <input type="number" class="form-control" id="floatingInput" placeholder="Enter Price"
+                        name="listing[price]" required>
+                    <label for="floatingInput">Price</label>
+                </div>
+                <div class="form-floating mb-2 mt-1">
+                    <input type="text" class="form-control" id="floatingInput"
+                        placeholder="Enter Country Name" name="listing[country]" required>
+                    <label for="floatingInput">Country</label>
+                </div>
+                <div class="form-floating mb-2 mt-1">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Enter Location"
+                        name="listing[location]" required>
+                    <label for="floatingInput">Location</label>
+                </div>
+                <div class="mb-2 mt-1">
+                    <select class="form-select" id="inputGroupSelect01" name="listing[category]" required>
+                        <option class="opt-1" selected disabled hidden>Select best fit category</option>
+                        <option value="village">Village</option>
+                        <option value="farm">Farms</option>
+                        <option value="nature">Nature</option>
+                        <option value="mountains">Mountains</option>
+                        <option value="lakes">Lakes</option>
+                        <option value="camping">Camping</option>
+                        <option value="heritage">Heritage</option>
+                        <option value="budget">Budget</option>
+                        <option value="eco">Eco</option>
+                        <option value="offbeat">Offbeat</option>
+                        <option value="orchards">Orchards</option>
+                        <option value="cities">Cities</option>
+                        <option value="riverside">Riverside</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="farmToTable">Farm-to-Table</option>
+                        <option value="animalFarms">Animal Farms</option>
+                        <option value="community">Community</option>
+                        <option value="festivals">Festivals</option>
+                    </select>
+                </div>
+                <div class="mb-2 mt-1">
+                    <select name="listing[availability]" class="form-select" required>
+                        <option class="opt-1" selected disabled hidden>Availability</option>
+                        <option value="available">Available</option>
+                        <option value="rented">Rented</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <input class="form-control" name="listing[imageUrl]" type="file"
+                        placeholder="Upload Listing" required />
+                </div>
+                <div class="row justify-content-center align-items-center mt-3 mb-3">
+                    <button type="submit" class=" signup__btn btn btn-primary btn-pro">
+                        Add
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

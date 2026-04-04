@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate.ejs') %>
+
+<%- include("../includes/navbar.ejs") %>
+<%- include("../includes/flash.ejs") %>
+
+<div class="mt-5 container mb-5">
+    <div class="row g-3">
+
+        <!-- REVIEWS SECTION -->
+        <% for (let review of reviews) { %>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card all-reviews-card p-3 border-0 shadow-sm rounded-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex  align-items-center gap-2">
+                            <img src="<%= review.author?.avatar || "https://res.cloudinary.com/dmxrppnpy/image/upload/v1774020279/default-user_d9cfvt.png" %>" width="30"
+                                height="30" style="border-radius: 50%; object-fit: cover;">
+                            <div style="font-weight: 600;">
+                                <%= review.author.fullname %>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-1">
+                            <%= review.rating %>
+                            <i class="fa-solid fa-star text-warning"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted mb-2">
+                        <%= review.comment %>
+                    </p>
+                    <% if(currUser && currUser._id.equals(review.author._id)) { %>
+                        <form
+                            action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                            method="POST">
+                            <input type="hidden" name="redirectTo" value="/listings/<%= listing._id %>/reviews?page=<%= page %>">
+                            <input type="hidden" name="page" value="<%= page %>">
+                            <button class="btn btn-sm btn-pro-small btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+        <% } %>
+
+        
+    </div>
+    <!-- PAGINATION SECTION -->
+        <%- include("../includes/pagination.ejs", {
+            prevPageUrl : `/listings/${listing._id}/reviews/?page=${page - 1}`,
+            currentPageUrl : `/listings/${listing._id}/reviews/?page=${page}`,
+            nextPageUrl : `/listings/${listing._id}/reviews/?page=${page + 1}`,
+            currentPage : page,
+            totalPages : totalPages,
+            margin : "mt-3"
+        }) %>
+</div>

@@ -1,0 +1,44 @@
+.signup__btn {
+    width: 50%;
+    color: white;
+    border-radius: 25px;
+}
+
+.signup__a {
+    color: rgb(79, 79, 245); 
+    text-decoration: none
+}
+
+.signup__card {
+    width: 50%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition:
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.35s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.signup__card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.06),
+        0 20px 40px rgba(0, 0, 0, 0.04);
+    border-color: #dee2ff;
+}
+
+@media (max-width: 768px) {
+    .signup__card {
+        width: 90%;
+    }
+    .signup__btn{
+        width: 90%;
+    }
+}
+
+.google-login-btn {
+    color: black !important; 
+    background: white !important;
+}

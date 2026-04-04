@@ -1,0 +1,225 @@
+.review__card {
+    width: 49%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition:
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.35s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.review__card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.06),
+        0 20px 40px rgba(0, 0, 0, 0.04);
+    border-color: #dee2ff;
+}
+
+.btn-pro-small {
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #dc3545;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s ease;
+}
+
+.search-panel {
+    background: white;
+    border: none !important;
+    background: none !important;
+    padding: 10px 20px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.review-card {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition:
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.35s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.reviews-card {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition:
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.35s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.06),
+        0 20px 40px rgba(0, 0, 0, 0.04);
+    border-color: #dee2ff;
+}
+
+.reviews-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.06),
+        0 20px 40px rgba(0, 0, 0, 0.04);
+    border-color: #dee2ff;
+}
+
+.listing-card {
+    width: 760px;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.listing-image {
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .listing-card {
+        width: 90%;
+    }
+}
+
+.listing-card-index {
+    width: 13rem;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .listing-card-index {
+        width: 90%;
+    }
+}
+
+.all-reviews-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition:
+        transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.35s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.all-reviews-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, 0.06),
+        0 20px 40px rgba(0, 0, 0, 0.04);
+    border-color: #dee2ff;
+}
+
+@media (max-width: 768px) {
+    .review__card {
+        width: 100%;
+    }
+}
+
+#filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+    padding: 1rem 0;
+    overflow-x: auto;
+    border-bottom: 1px solid #eee;
+    scrollbar-width: none;
+}
+
+#filters::-webkit-scrollbar {
+    display: none;
+}
+
+.filter {
+    min-width: 60px;
+    text-align: center;
+    text-decoration: none;
+    color: #555;
+    padding: 10px 5px;
+    border-radius: 12px;
+    transition: all 0.25s ease;
+}
+
+.filter i {
+    font-size: 20px;
+}
+
+.filter span {
+    display: block;
+    font-size: 0.75rem;
+    margin-top: 5px;
+}
+
+.filter:hover {
+    color: black;
+    transform: translateY(-3px);
+}
+
+.filter:active {
+    transform: scale(0.95);
+}
+
+.listing-info {
+    padding: 10px 0;
+}
+
+.price-row {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.price {
+    font-weight: 600;
+}
+
+.duration {
+    color: #666;
+}
+
+.info-row {
+    margin-bottom: 4px;
+    color: #444;
+}
+
+.desc {
+    margin-top: 8px;
+    color: #555;
+}
+
+.btn-search {
+    background-color: #8590d6;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+}
+
+.search-input {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    font-size: 1rem;
+}

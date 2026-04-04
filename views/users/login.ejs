@@ -1,0 +1,44 @@
+<% layout("/layouts/boilerplate") %>
+
+<%- include("../includes/navbar.ejs") %>
+<%- include("../includes/flash.ejs") %>
+
+<!-- LOGIN SECTION -->
+<div class="container cnt-1 mt-5 mb-5 ">
+<div class="row justify-content-center align-items-center">
+    <div class="card login__card">
+        <h2 class="text-center mt-2">Login</h2>
+        <form method="POST" action="/login" class="needs-validation" novalidate>
+            <div class="form-floating mb-2 mt-1">
+                <input type="text" class="form-control" id="floatingInput"
+                    placeholder="Enter your username" name="username" required>
+                <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="password" class="form-control" id="floatingInput"
+                    placeholder="Enter your username" name="password" required>
+                <label for="floatingInput">Password</label>
+            </div>
+            <div class="row justify-content-center align-items-center mt-3">
+                <button type="submit" class=" btn-pro btn btn-primary login__btn ">Log in</button>
+            </div>
+        </form>
+        <div class="d-flex align-items-center mt-2">
+            <hr style="flex:1;">
+            <span style="margin: 0 10px;">OR</span>
+            <hr style="flex:1;">
+        </div>
+        <div class="row justify-content-center align-items-center mt-2 mb-2">
+            <a href="/auth/google"
+                class="btn btn-pro btn-primary login__btn google-login-btn d-flex align-items-center justify-content-center gap-2">
+                <img src="https://res.cloudinary.com/dmxrppnpy/image/upload/v1774020186/Google_aohcut.png"
+                    width="20">
+                <span>Continue with Google</span>
+            </a>
+        </div>
+        <p class="text-center mt-2">Don't have an account? &nbsp; 
+            <a href="/signup" class="login__a">Sign Up</a>
+        </p>
+    </div>
+</div>
+</div>

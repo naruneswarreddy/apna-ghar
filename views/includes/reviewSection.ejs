@@ -1,0 +1,106 @@
+
+<% if(currUser) {%>
+    <div class="container  mt-5">
+        <div class="row mb-5 justify-content-center align-items-center">
+            <div class="row mt-3 review__card card">
+                <h3 class="text-center mt-2 p-1">Leave a Review</h3>
+                <form method="POST" action="/listings/<%= listing._id%>/reviews" class="needs-validation"
+                    novalidate>
+                    <div class="form-floating">
+                        <textarea name="review[comment]" class="form-control" placeholder="Leave a comment here"
+                            id="floatingTextarea2" style="height: 100px"></textarea>
+                        <div class="invalid-feedback">Please write some
+                            comment.</div>
+                        <label for="floatingTextarea2">Comment</label>
+                    </div>
+                    <div class=" mt-2 ms-1">
+                        <label for="rating" class="form-label">
+                            <p>Rating</p>
+                            <fieldset class="starability-slot sizes mt-0">
+                                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1"
+                                    checked aria-label="No rating." />
+                                <input type="radio" id="first-rate1" name="review[rating]" value="1" required />
+                                <label for="first-rate1" title="Terrible">1 star</label>
+                                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                                <label for="first-rate2" title="Not good">2 stars</label>
+                                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                                <label for="first-rate3" title="Average">3 stars</label>
+                                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                                <label for="first-rate4" title="Very good">4 stars</label>
+                                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                                <label for="first-rate5" title="Amazing">5 stars</label>
+                            </fieldset>
+                        </label>
+                    </div>
+                    <div class="row mt-0 justify-content-center align-items-center">
+                        <button class="mt-0 btn mb-3 btn btn-pro btn-primary" type="submit" style="width: 50%; ">Add
+                            Review</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%}%>
+
+<!-- ALL REVIEWS SECTION -->
+<div class="mt-3 px-0">
+    <div class="d-flex row justify-content-center align-items-center mt-3 px-0">
+        <div class="col-md-6">
+            <% if(reviews.length > 0) {%>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-semibold mb-0">
+                    All Reviews
+                </h4>
+                <div class="d-flex align-items-center gap-1">
+                    <span class="fw-semibold">
+                        <%= avgRating %>
+                    </span>
+                    <i class="fa-solid fa-star text-warning"></i>
+                    <span class="text-muted">
+                        (<%= reviewCount %>)
+                    </span>
+                </div>
+            </div>
+            <%}%>
+            <% for (let review of reviews) { %>
+                <div class="review__card card reviews-card mb-3 p-3 border-0 shadow-sm rounded-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="<% review.author.avatar || "https://res.cloudinary.com/dmxrppnpy/image/upload/v1774020279/default-user_d9cfvt.png"%> "
+                                width="30" height="30" style="border-radius: 50%; object-fit: cover;">
+                            <div style="font-weight: 600;">
+                                <%= review.author.fullname %>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-1">
+                            <%= review.rating %>
+                                <i class="fa-solid fa-star text-warning"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted mb-2">
+                        <%= review.comment %>
+                    </p>
+                    <% if(currUser && currUser._id.equals(review.author._id)) { %>
+                        <form
+                            action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                            method="POST">
+                            <input type="hidden" name="redirectTo" value="/departments/<%= listing._id %>">
+                            <button class="btn btn-sm btn-pro-small btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                        <% } %>
+                </div>
+                <% } %>
+
+                <% if(reviewCount> 3) { %>
+                    <a href="/listings/<%= listing._id %>/reviews">
+                        <button class="btn btn-pro btn-primary">
+                            All Reviews
+                        </button>
+                    </a>
+                    <% } %>
+                   
+        </div>
+    </div>
+</div>

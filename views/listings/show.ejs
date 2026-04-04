@@ -1,0 +1,84 @@
+<% layout("layouts/boilerplate") %>
+
+<%- include("../includes/navbar.ejs") %>
+<%- include("../includes/flash.ejs") %>
+
+<div class="container mt-4 mb-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="listing-card">
+            <h3 class="text-start mt-2">
+                <%= listing.title %>
+            </h3>
+            <img src="<%= listing.imageUrl %>" class="card-img-top show-img listing-image"
+                style="height: 23rem;" alt="listing-image">
+            <div class="card-body listing-info mb-2">
+
+                <div class="price-row">
+                    <span class="price">
+                        &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A" %>
+                    </span>
+                    <span class="duration">/ month</span>
+                </div>
+
+                <div class="info-row">
+                    <strong>Location:</strong>
+                    <span>
+                        <%= listing.location %>, <%= listing.country %>
+                    </span>
+                </div>
+
+                <div class="info-row">
+                    <strong>Category:</strong>
+                    <% let category = listing.category || "House" %>
+                    <span>
+                        <%= category[0].toUpperCase() + category.slice(1) || "House" %>
+                    </span>
+                </div>
+                <div>
+                    <% let status = listing.availability || "available"%>
+                    <% if(listing.availability==="available" ) { %>
+                        <strong>Availability:</strong>
+                        <span style="color: green;">
+                            <%= status[0].toUpperCase() + status.slice(1) || "" %>
+                        </span>
+                        <% } else { %>
+                            <strong>Availability:</strong>
+                            <span style="color: red;">
+                                <%= status[0].toUpperCase() + status.slice(1) || "" %>
+                            </span>
+                            <% } %>
+                </div>
+
+                <div class="desc">
+                    <%= listing.description %>
+                </div>
+
+            </div>
+            <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
+                <div class="row mb-3">
+                    <div class="col">
+                        <a href="/listings/<%= listing._id %>/edit"
+                            class="btn btn-pro btn-primary w-100">Edit </a>
+
+                    </div>
+                    <div class="col">
+                            <button class="btn btn-pro btn-danger w-100" data-bs-toggle="modal" data-bs-target="#deleteExperienceModal<%= listing._id %>">Delete</button>
+                    </div>
+                  
+                </div>
+
+                <!-- DELETE EXPERIENCE MODAL -->
+                <%- include("../includes/deleteModal.ejs", {
+                    modalId : `deleteExperienceModal${listing._id}`,
+                    entityType : "Delete Listing:",
+                    entityName : `${listing.title}`,
+                    confirmMessage : "Are you sure you want to delete this Listing?",
+                    warningMessage : "This action will permanently remove the listing and all associated data. This cannot be undone.",
+                    formAction : `/listings/${listing._id}?_method=DELETE`
+                }) %>
+            <% }%>
+        </div>
+    </div>
+
+    <%- include("../INCLUDES/reviewSection.ejs") %>
+</div>
