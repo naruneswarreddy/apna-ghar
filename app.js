@@ -34,7 +34,7 @@ const ExpressError = require("./utils/ExpressError.js");
 
 // View Engine
 app.set("view engine","ejs");
-app.set("views",path.join(__dirname,"VIEWS"));
+app.set("views",path.join(__dirname,"views"));
 app.engine("ejs",ejsMate);
 
 app.use(express.static(path.join(__dirname,"/public")));
