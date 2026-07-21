@@ -103,7 +103,7 @@ module.exports.destroyListing = async (req, res) => {
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);
     if (!deletedListing) {
-        req.flash('error', 'The requested club could not be found.');
+        req.flash('error', 'The requested listing could not be found.');
         return res.redirect('/clubs');
     }
     await Review.deleteMany({_id: { $in: deletedListing.reviews }});
